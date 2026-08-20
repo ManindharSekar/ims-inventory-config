@@ -1,1 +1,38 @@
 
+server:
+  port: 8080
+
+spring:
+  cloud:
+    gateway:
+      server:
+        webmvc:
+          routes:
+            - id: users
+              uri: http://localhost:8081
+              predicates:
+                - Path=/api/customers/**,/api/suppliers/**
+            - id : product
+              uri: http://localhost:8082
+              predicates:
+                - Path=/api/products/**,/api/category/**
+            - id: inventory
+              uri: http://localhost:8083
+              predicates:
+                - Path=/api/inventory/**,/api/warehouse/**,/api/stock-transfer/**
+            - id: purchase
+              uri: http://localhost:8084
+              predicates:
+                - Path=/api/purchase/**
+            - id: sales
+              uri: http://localhost:8085
+              predicates:
+                - Path=/api/sales/**
+logging:
+  level:
+    org.springframework.cloud.gateway: TRACE
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
