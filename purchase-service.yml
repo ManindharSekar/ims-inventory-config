@@ -1,1 +1,13 @@
-
+server:
+  port: 8084
+spring:
+  datasource:
+    url: jdbc:postgresql://ep-red-flower-ata4deb4-pooler.c-9.us-east-1.aws.neon.tech/purchase?sslmode=require&channel_binding=require
+    username: neondb_owner
+    password: npg_nREKNxlv03cX
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
